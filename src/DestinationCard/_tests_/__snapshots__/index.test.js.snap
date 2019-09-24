@@ -2900,7 +2900,6 @@ exports[`DestinationCard one-way should match snapshot 1`] = `
           spacing="extraTight"
         >
           <Heading
-            element="div"
             inverted={true}
             type="title3"
           >
@@ -3863,7 +3862,6 @@ exports[`DestinationCard one-way should match snapshot 1`] = `
         }
       >
         <Heading
-          element="div"
           inverted={true}
           type="title1"
         >
@@ -4347,7 +4345,6 @@ exports[`DestinationCard one-way should match snapshot 1`] = `
         }
       >
         <Heading
-          element="div"
           inverted={true}
           type="title4"
         >
@@ -4362,7 +4359,6 @@ exports[`DestinationCard one-way should match snapshot 1`] = `
       spaceAfter="small"
     >
       <Heading
-        element="div"
         inverted={true}
         type="title3"
       >

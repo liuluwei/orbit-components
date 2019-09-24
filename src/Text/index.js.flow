@@ -8,7 +8,7 @@ import type { spaceAfter } from "../common/getSpacingToken/index";
 import type { Globals } from "../common/common.js.flow";
 
 type Align = "left" | "center" | "right";
-type Element = "p" | "span" | "div";
+type As = "p" | "span" | "div";
 type Type =
   | "primary"
   | "secondary"
@@ -28,7 +28,7 @@ export type Props = {|
   +align?: Align,
   +italic?: boolean,
   +uppercase?: boolean,
-  +element?: Element,
+  +as?: As,
   +children: React$Node,
   +id?: string,
   ...Globals,

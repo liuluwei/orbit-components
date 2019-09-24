@@ -190,7 +190,7 @@ class ModalHeader extends React.PureComponent<Props> {
             {title && <Heading type="title1">{title}</Heading>}
             {description && (
               <ModalDescription>
-                <Text size="large" element="div">
+                <Text size="large" as="div">
                   {description}
                 </Text>
               </ModalDescription>

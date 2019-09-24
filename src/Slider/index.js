@@ -427,11 +427,7 @@ export class PureSlider extends React.PureComponent<Props & ThemeProps, State> {
       <Stack direction="row" spacing="none" spaceAfter={biggerSpace ? "medium" : "small"}>
         {(label || histogramDescription) && (
           <Stack direction="column" spacing="none" basis="60%" grow>
-            {label && (
-              <Heading type="title4" element="div">
-                {label}
-              </Heading>
-            )}
+            {label && <Heading type="title4">{label}</Heading>}
             {valueDescription && (
               <Text type="secondary" size="small">
                 {valueDescription}

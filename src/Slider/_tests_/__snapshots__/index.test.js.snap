@@ -490,7 +490,6 @@ exports[`Range Slider in render should match snapshot 1`] = `
       spacing="none"
     >
       <Heading
-        element="div"
         type="title4"
       >
         Depart from Prague

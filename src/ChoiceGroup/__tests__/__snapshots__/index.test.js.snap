@@ -481,7 +481,7 @@ exports[`RadioGroup Filters should match snapshot 1`] = `
   }
 >
   <Heading
-    element="h5"
+    as="h5"
     id="choiceGroupID50000-id-50000"
     spaceAfter="medium"
     type="title2"
@@ -1028,7 +1028,7 @@ exports[`RadioGroup should match snapshot 1`] = `
   }
 >
   <Heading
-    element="h5"
+    as="h5"
     id="choiceGroupID50000-id-50000"
     spaceAfter="medium"
     type="title2"

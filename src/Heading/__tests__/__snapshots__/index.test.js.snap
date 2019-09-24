@@ -12,7 +12,7 @@ exports[`Heading in DIV, type Title5 should match snapshot 1`] = `
 }
 
 <Heading
-  element="div"
+  as="div"
   type="title5"
 >
   <Heading__StyledHeading

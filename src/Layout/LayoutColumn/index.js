@@ -15,8 +15,8 @@ StyledColumn.defaultProps = {
   theme: defaultTheme,
 };
 
-const LayoutColumn = ({ children, hideOn, element = "div" }: Props) => (
-  <StyledColumn hideOn={hideOn} as={element}>
+const LayoutColumn = ({ children, hideOn, as = "div" }: Props) => (
+  <StyledColumn hideOn={hideOn} as={as}>
     {children}
   </StyledColumn>
 );

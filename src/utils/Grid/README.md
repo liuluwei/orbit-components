@@ -23,13 +23,13 @@ Table below contains all types of the props available in the Grid component.
     
 | Name          | Type                        | Default         | Description                      |
 | :------------ | :-------------------------- | :-------------- | :------------------------------- |
+| as            | `string`                    | `"div"`         | The valid DOM element used for the root node.
 | **children**  | `React.Node`                |                 | The content of the Grid. [See Usage](#usage)
 | className     | `string`                    |                 | If needed, you can extend the Grid component with the `styled` factory and add your styles.
 | columns       | `string`                    | `"1fr"`         | Property alias for `grid-template-columns`, [see known limitations](#templates-known-limitations).
 | columnGap     | `string`                    |                 | The gap size for `columns`.
 | dataTest      | `string`                    |                 | Optional prop for testing purposes.
 | desktop       | [`Object`](#media-queries)  |                 | Object for setting up properties for the desktop viewport. [See Media queries](#media-queries)
-| element       | `string`                    | `"div"`         | The valid DOM element used for the root node.
 | gap           | `string`                    |                 | The gap size for `columns` and `rows`.
 | inline        | `boolean`                   | `false`         | If `true`, the Grid will have `display: inline-grid`, otherwise `display: grid`.
 | tablet        | [`Object`](#media-queries)  |                 | Object for setting up properties for the tablet viewport. [See Media queries](#media-queries)

@@ -3347,7 +3347,7 @@ exports[`TripSegment with List as children should match snapshot 1`] = `
           >
             <Text
               align="right"
-              element="div"
+              as="div"
             >
               5:30
             </Text>
@@ -3830,7 +3830,7 @@ exports[`TripSegment with List as children should match snapshot 1`] = `
           >
             <Text
               align="right"
-              element="div"
+              as="div"
             >
               11:20
             </Text>
@@ -3840,7 +3840,7 @@ exports[`TripSegment with List as children should match snapshot 1`] = `
           grow={true}
         >
           <Text
-            element="div"
+            as="div"
             type="primary"
           >
             <Truncate>
@@ -3848,7 +3848,7 @@ exports[`TripSegment with List as children should match snapshot 1`] = `
             </Truncate>
           </Text>
           <Text
-            element="div"
+            as="div"
             type="primary"
           >
             <Truncate>
@@ -4334,7 +4334,7 @@ exports[`TripSegment with List as children should match snapshot 1`] = `
         }
       >
         <Text
-          element="div"
+          as="div"
           size="small"
           type="secondary"
         >

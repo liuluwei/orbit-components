@@ -1449,7 +1449,6 @@ exports[`ListChoice should match snapshot 1`] = `
     }
   >
     <Heading
-      element="div"
       type="title4"
     >
       Choice Title

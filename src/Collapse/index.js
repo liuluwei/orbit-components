@@ -115,9 +115,7 @@ const Collapse = ({
         id={labelID}
       >
         <Stack direction="row" justify="between" align="center">
-          <Heading type="title4" element="div">
-            {label}
-          </Heading>
+          <Heading type="title4">{label}</Heading>
           {/* TODO: dictionary for title */}
           <ButtonLink
             iconLeft={<AnimatedIcon expanded={expanded} />}
