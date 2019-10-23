@@ -150,14 +150,13 @@ const ModalHeader = ({
   const { isMobileFullPage, setDimensions, decideFixedFooter, manageFocus } = useContext(
     ModalContext,
   );
-  const callContextFunctions = useCallback(() => {
+
+  useEffect(() => {
     if (setDimensions) setDimensions();
     if (decideFixedFooter) decideFixedFooter();
-  }, [decideFixedFooter, setDimensions]);
-  useEffect(() => {
-    callContextFunctions();
     if (manageFocus) manageFocus();
-  }, [callContextFunctions, manageFocus]);
+  }, [children, manageFocus, setDimensions, decideFixedFooter]);
+
   return (
     <StyledModalHeader
       illustration={!!illustration}

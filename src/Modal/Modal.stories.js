@@ -108,7 +108,7 @@ storiesOf("Modal", module)
   .add(
     "Without section",
     () => {
-      const showMore = boolean(false);
+      const showMore = boolean("showMore", false);
       return (
         <Modal onClose={action("onClose")} fixedFooter>
           <ModalHeader

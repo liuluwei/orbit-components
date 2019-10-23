@@ -77,15 +77,17 @@ const WrappedChildren = ({ children, flex = "0 1 auto" }) => {
       return (
         <StyledChild flex={getChildFlex(flex, key)}>
           {React.cloneElement(child, {
-            ref: node => {
-              // Call the original ref, if any
-              const { ref } = child;
-              if (typeof ref === "function") {
-                ref(node);
-              } else if (ref !== null) {
-                ref.current = node;
-              }
-            },
+            ref: child.red
+              ? node => {
+                  // Call the original ref, if any
+                  const { ref } = child;
+                  if (typeof ref === "function") {
+                    ref(node);
+                  } else if (ref !== null) {
+                    ref.current = node;
+                  }
+                }
+              : null,
           })}
         </StyledChild>
       );
@@ -99,15 +101,11 @@ const ModalFooter = ({ dataTest, children, flex }: Props) => {
     ModalContext,
   );
 
-  const callContextFunctions = useCallback(() => {
+  useEffect(() => {
     if (setDimensions) setDimensions();
     if (decideFixedFooter) decideFixedFooter();
-  }, [decideFixedFooter, setDimensions]);
-
-  useEffect(() => {
-    callContextFunctions();
     if (manageFocus) manageFocus();
-  }, [callContextFunctions, manageFocus]);
+  }, [decideFixedFooter, manageFocus, setDimensions]);
 
   return (
     <StyledModalFooter data-test={dataTest} isMobileFullPage={isMobileFullPage}>
