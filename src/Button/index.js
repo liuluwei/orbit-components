@@ -40,7 +40,7 @@ const Button = React.forwardRef<Props, HTMLButtonElement>((props, ref) => {
   } = props;
   const iconLeft = props.iconLeft || icon;
   const sizeIcon = size === ICON_SIZES.SMALL ? ICON_SIZES.SMALL : ICON_SIZES.MEDIUM;
-  const onlyIcon = iconLeft && !children;
+  const onlyIcon = Boolean(iconLeft && !children);
   const isDisabled = loading || disabled;
 
   return (
@@ -51,11 +51,10 @@ const Button = React.forwardRef<Props, HTMLButtonElement>((props, ref) => {
       bordered={bordered}
       fullWidth={fullWidth}
       asComponent={asComponent}
-      onlyIcon={iconLeft && !children}
+      onlyIcon={onlyIcon}
       disabled={isDisabled}
       loading={loading}
       size={size}
-      sizeIcon={sizeIcon}
       href={!disabled ? href : null}
       target={!disabled && href && external ? "_blank" : undefined}
       rel={!disabled && href && external ? "noopener noreferrer" : undefined}

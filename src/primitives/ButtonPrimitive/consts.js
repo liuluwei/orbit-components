@@ -11,6 +11,11 @@ export const TYPE_OPTIONS = {
   WHITE: "white",
 };
 
+export const TYPE_OPTIONS_LINK = {
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+};
+
 export const SIZE_OPTIONS = {
   SMALL: "small",
   NORMAL: "normal",

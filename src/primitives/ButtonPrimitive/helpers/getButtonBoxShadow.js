@@ -31,7 +31,13 @@ const opacity = {
   },
 };
 
-const getButtonBoxShadow: GetButtonBoxShadow = state => ({ disabled, bordered, theme, type }) => {
+const getButtonBoxShadow: GetButtonBoxShadow = state => ({
+  disabled,
+  bordered,
+  theme,
+  type,
+  transparent,
+}) => {
   if (disabled) {
     return null;
   }
@@ -45,7 +51,7 @@ const getButtonBoxShadow: GetButtonBoxShadow = state => ({ disabled, bordered, t
       box-shadow: inset 0 0 0 1px ${getTypeToken(TOKENS.borderColorButtonHover)};
     `;
   }
-  if (state === BUTTON_STATES.ACTIVE) {
+  if (state === BUTTON_STATES.ACTIVE && !transparent) {
     if (bordered) {
       return css`
         box-shadow: inset 0 0 0 1px ${getTypeToken(TOKENS.borderColorButtonActive)},
@@ -53,6 +59,7 @@ const getButtonBoxShadow: GetButtonBoxShadow = state => ({ disabled, bordered, t
             ${convertHexToRgba(theme.orbit.paletteInkNormal, opacity.bordered[type])}; // TODO: Create token
       `;
     }
+
     return css`
       box-shadow: inset 0 0 6px 3px
         ${convertHexToRgba(theme.orbit.paletteInkNormal, opacity.default[type])}; // TODO: Create token

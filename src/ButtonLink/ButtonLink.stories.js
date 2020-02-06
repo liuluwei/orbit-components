@@ -6,7 +6,7 @@ import { action } from "@storybook/addon-actions";
 import { text, number, boolean, select } from "@storybook/addon-knobs";
 
 import * as Icons from "../icons";
-import { TYPES, SIZES } from "./consts";
+import { TYPE_OPTIONS, SIZE_OPTIONS } from "../primitives/ButtonPrimitive/consts";
 import RenderInRtl from "../utils/rtl/RenderInRtl";
 import SPACINGS_AFTER from "../common/getSpacingToken/consts";
 
@@ -36,8 +36,8 @@ storiesOf("ButtonLink", module)
     "Circled",
     () => {
       const circled = boolean("circled", true);
-      const type = select("Type", Object.values(TYPES), TYPES.SECONDARY);
-      const size = select("Size", Object.values(SIZES), SIZES.LARGE);
+      const type = select("Type", Object.values(TYPE_OPTIONS), TYPE_OPTIONS.SECONDARY);
+      const size = select("Size", Object.values(SIZE_OPTIONS), SIZE_OPTIONS.LARGE);
       const IconLeft = getIcon(getIcons("iconLeft", "Airplane"));
 
       return (
@@ -62,8 +62,8 @@ storiesOf("ButtonLink", module)
       const children = text("Children", "ButtonLink");
       const disabled = boolean("Disabled", false);
       const fullWidth = boolean("fullWidth", false);
-      const type = select("Type", Object.values(TYPES), TYPES.SECONDARY);
-      const size = select("Size", Object.values(SIZES), SIZES.LARGE);
+      const type = select("Type", Object.values(TYPE_OPTIONS), TYPE_OPTIONS.SECONDARY);
+      const size = select("Size", Object.values(SIZE_OPTIONS), SIZE_OPTIONS.LARGE);
       const width = number("Width", 0);
       const IconLeft = getIcon(getIcons("iconLeft", "Airplane"));
       const IconRight = getIcon(getIcons("iconRight", "ChevronDown"));

@@ -6,7 +6,7 @@ import { warning } from "@adeira/js";
 import { ICON_SIZES } from "../../Icon/consts";
 import IconContainer from "./components/IconContainer";
 import defaultTheme from "../../defaultTheme";
-import { TOKENS, BUTTON_STATES } from "./consts";
+import { TOKENS, BUTTON_STATES, SIZE_OPTIONS, TYPE_OPTIONS } from "./consts";
 import { StyledSpinner } from "../../Loading";
 import getSpacingToken from "../../common/getSpacingToken";
 import getSizeToken from "./helpers/getSizeToken";
@@ -21,6 +21,7 @@ export const StyledButton = styled(
   ({
     theme,
     asComponent = "button",
+    buttonLink,
     circled,
     external,
     type,
@@ -99,13 +100,15 @@ export const StyledButton = styled(
   ${getButtonBoxShadow(BUTTON_STATES.DEFAULT)};
 
   &:hover {
-    background: ${({ disabled, bordered }) =>
+    background: ${({ disabled, bordered, transparent }) =>
       !disabled &&
+      !transparent &&
       (bordered
         ? getTypeToken(TOKENS.backgroundButtonBorderedHover)
         : getTypeToken(TOKENS.backgroundButtonHover))};
-    color: ${({ disabled, bordered }) =>
+    color: ${({ disabled, bordered, transparent }) =>
       !disabled &&
+      !transparent &&
       (bordered
         ? getTypeToken(TOKENS.colorTextButtonBorderedHover)
         : getTypeToken(TOKENS.colorTextButtonHover))}!important;
@@ -121,29 +124,37 @@ export const StyledButton = styled(
   }
 
   &:active {
-    ${({ disabled, bordered }) =>
-      !disabled &&
-      css`
-        background: ${bordered
-          ? getTypeToken(TOKENS.backgroundButtonBorderedActive)
-          : getTypeToken(TOKENS.backgroundButtonActive)};
-        color: ${bordered
-          ? getTypeToken(TOKENS.colorTextButtonBorderedActive)
-          : getTypeToken(TOKENS.colorTextButtonActive)}!important;
-        ${getButtonBoxShadow(BUTTON_STATES.ACTIVE)};
-        & ${IconContainer} {
-          color: ${bordered
-            ? getTypeToken(TOKENS.colorTextButtonBorderedActive)
-            : getTypeToken(TOKENS.colorTextButtonActive)};
-        }
-      `};
-  }
+    ${({ buttonLink, transparent, disabled, bordered }) =>
+      buttonLink
+        ? !disabled &&
+          css`
+              background: ${!transparent && getTypeToken(TOKENS.backgroundButtonActive)};
+              color: ${getTypeToken(TOKENS.colorTextButtonActive)}!important;
+              ${getButtonBoxShadow(BUTTON_STATES.ACTIVE)};
+            ;
+      }`
+        : !disabled &&
+          css`
+            background: ${bordered || !transparent
+              ? getTypeToken(TOKENS.backgroundButtonBorderedActive)
+              : getTypeToken(TOKENS.backgroundButtonActive)};
+            ${getButtonBoxShadow(BUTTON_STATES.ACTIVE)};
+            color: ${bordered
+              ? getTypeToken(TOKENS.colorTextButtonBorderedActive)
+              : getTypeToken(TOKENS.colorTextButtonActive)}!important;
+            & ${IconContainer} {
+              color: ${bordered
+                ? getTypeToken(TOKENS.colorTextButtonBorderedActive)
+                : getTypeToken(TOKENS.colorTextButtonActive)};
+            }
+          `};
 
-  ${getFocus}
+    ${StyledSpinner} {
+      width: ${getSizeToken(TOKENS.loadingWidth)};
+      height: ${getSizeToken(TOKENS.loadingHeight)};
+    }
 
-  ${StyledSpinner} {
-    width: ${getSizeToken(TOKENS.loadingWidth)};
-    height: ${getSizeToken(TOKENS.loadingHeight)};
+    ${getFocus};
   }
 `;
 
@@ -155,7 +166,8 @@ const ButtonPrimitive = (props: Props) => {
   const {
     children,
     title,
-    size,
+    size = SIZE_OPTIONS.NORMAL,
+    type = TYPE_OPTIONS.PRIMARY,
     iconLeft,
     loading,
     onlyIcon,
@@ -167,11 +179,11 @@ const ButtonPrimitive = (props: Props) => {
   const sizeIcon = size === ICON_SIZES.SMALL ? ICON_SIZES.SMALL : ICON_SIZES.MEDIUM;
   const isDisabled = loading || disabled;
 
+  const name = buttonLink ? `buttonLink` : `button`;
+
   warning(
     !(!children && !title),
-    `Warning: children or title property is missing on ${
-      buttonLink ? "ButtonLink" : "Button"
-    } . Use title property to add aria-label to be accessible for screen readers. More information https://orbit.kiwi/components/button/api/#accessibility`,
+    `Warning: children or title property is missing on ${name}. Use title property to add aria-label to be accessible for screen readers. More information https://orbit.kiwi/components/${name}/api/#accessibility`,
   );
 
   return (
@@ -180,7 +192,9 @@ const ButtonPrimitive = (props: Props) => {
       onlyIcon={onlyIcon}
       disabled={isDisabled}
       size={size}
+      type={type}
       title={title}
+      buttonLink={buttonLink}
       {...properties}
     >
       {children}

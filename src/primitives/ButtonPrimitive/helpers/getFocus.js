@@ -6,10 +6,10 @@ import getTypeToken from "./getTypeToken";
 import getButtonBoxShadow from "./getButtonBoxShadow";
 import type { GetFocus } from "./getFocus";
 
-const getFocus: GetFocus = ({ bordered }) => {
+const getFocus: GetFocus = ({ bordered, buttonLink }) => {
   return css`
     :focus {
-      ${getButtonBoxShadow(BUTTON_STATES.FOCUS)};
+      ${!buttonLink && getButtonBoxShadow(BUTTON_STATES.FOCUS)};
       background: ${bordered && getTypeToken(TOKENS.backgroundButtonFocus)};
     }
     :focus:not(:focus-visible) {
@@ -20,7 +20,7 @@ const getFocus: GetFocus = ({ bordered }) => {
     }
     :-moz-focusring,
     :focus-visible {
-      ${getButtonBoxShadow(BUTTON_STATES.FOCUS)};
+      ${!buttonLink && getButtonBoxShadow(BUTTON_STATES.FOCUS)};
       background: ${bordered && getTypeToken(TOKENS.backgroundButtonFocus)};
     }
   `;

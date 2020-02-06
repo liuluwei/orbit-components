@@ -4,8 +4,8 @@ import convertHexToRgba from "@kiwicom/orbit-design-tokens/lib/convertHexToRgba"
 import { TOKENS, TYPE_OPTIONS } from "../consts";
 import type { GetTypeToken } from "./getTypeToken";
 
-const getTypeToken: GetTypeToken = name => ({ theme, type }) => {
-  const tokens = {
+const getTypeToken: GetTypeToken = name => ({ theme, type, buttonLink }) => {
+  const buttonTokens = {
     [TOKENS.backgroundButton]: {
       [TYPE_OPTIONS.PRIMARY]: theme.orbit.backgroundButtonPrimary,
       [TYPE_OPTIONS.SECONDARY]: theme.orbit.backgroundButtonSecondary,
@@ -194,7 +194,43 @@ const getTypeToken: GetTypeToken = name => ({ theme, type }) => {
       [TYPE_OPTIONS.WHITE]: convertHexToRgba(theme.orbit.paletteWhite, 50),
     },
   };
-  return tokens[name][type];
+
+  const buttonLinkTokens = {
+    [TOKENS.backgroundButton]: {
+      [TYPE_OPTIONS.PRIMARY]: theme.orbit.backgroundButtonLinkPrimary,
+      [TYPE_OPTIONS.SECONDARY]: theme.orbit.backgroundButtonLinkSecondary,
+    },
+    [TOKENS.backgroundButtonHover]: {
+      [TYPE_OPTIONS.PRIMARY]: theme.orbit.backgroundButtonLinkPrimaryHover,
+      [TYPE_OPTIONS.SECONDARY]: theme.orbit.backgroundButtonLinkSecondaryHover,
+    },
+    [TOKENS.backgroundButtonActive]: {
+      [TYPE_OPTIONS.PRIMARY]: theme.orbit.backgroundButtonLinkPrimaryHover,
+      [TYPE_OPTIONS.SECONDARY]: theme.orbit.backgroundButtonLinkSecondaryHover,
+    },
+    [TOKENS.colorTextButton]: {
+      [TYPE_OPTIONS.PRIMARY]: theme.orbit.colorTextButtonLinkPrimary,
+      [TYPE_OPTIONS.SECONDARY]: theme.orbit.colorTextButtonLinkSecondary,
+    },
+    [TOKENS.colorTextButtonHover]: {
+      [TYPE_OPTIONS.PRIMARY]: theme.orbit.colorTextButtonLinkPrimaryHover,
+      [TYPE_OPTIONS.SECONDARY]: theme.orbit.colorTextButtonLinkSecondaryHover,
+    },
+    [TOKENS.colorTextButtonActive]: {
+      [TYPE_OPTIONS.PRIMARY]: theme.orbit.colorTextButtonLinkPrimaryActive,
+      [TYPE_OPTIONS.SECONDARY]: theme.orbit.colorTextButtonLinkSecondaryActive,
+    },
+    [TOKENS.backgroundButtonFocus]: {
+      [TYPE_OPTIONS.PRIMARY]: convertHexToRgba(theme.orbit.paletteProductNormal, 10),
+      [TYPE_OPTIONS.SECONDARY]: convertHexToRgba(theme.orbit.paletteInkLight, 10),
+    },
+  };
+
+  if (buttonLink) {
+    return buttonLinkTokens[name][type];
+  }
+
+  return buttonTokens[name][type];
 };
 
 export default getTypeToken;
